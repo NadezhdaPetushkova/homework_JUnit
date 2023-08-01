@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
-
-
 class CashbackHackServiceTest {
 
     @Test
@@ -19,19 +16,27 @@ class CashbackHackServiceTest {
     }
 
     @Test
-    public void testRemainWithCashback() {
+    public void remainWithCashback() {
         CashbackHackService service = new CashbackHackService();
         int amount = 999;
         int actual = service.remain(amount);
         int expected = 1;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
     @Test
-    public void testRemainWithCash() {
+    public void remainWithMinAmount() {
         CashbackHackService service = new CashbackHackService();
         int amount = 1001;
         int actual = service.remain(amount);
         int expected = 999;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void amountMoreBoundary() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 4600;
+        int actual = service.remain(amount);
+        int expected = 400;
+        assertEquals(expected, actual);
     }
 }
